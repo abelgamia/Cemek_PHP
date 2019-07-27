@@ -1,12 +1,15 @@
 <?php
+
 namespace php\view;
+
+use php\View;
 
 /**
  *
  * @author Edi
  *        
  */
-class Top
+class Zwykly extends View
 {
 }
 

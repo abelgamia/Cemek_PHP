@@ -1,2 +1,8 @@
 <?php
-echo "helo koty helo koty helo koty helo koty";
+use php\control\Control_1;
+
+session_start ();
+require 'php/rekfiry.php';
+$index = new Control_1 ();
+echo "index";
+?>
