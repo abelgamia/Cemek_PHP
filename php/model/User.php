@@ -24,27 +24,27 @@ class User extends Model
 	function __construct()
 	{
 		parent::__construct ();
-		if (! empty ( $_SESSION [login] ) && ! empty ( $_SESSION [haslo] ))
+		if (! empty ( $_SESSION ['login'] ) && ! empty ( $_SESSION ['haslo'] ))
 		{
 			addslashes ( $_SESSION ['login'] );
-			setLogin ( $_SESSION ['login'] );
+			self::setLogin ( $_SESSION ['login'] );
 			addslashes ( $_SESSION ['haslo'] );
-			setHaslo ( $_SESSION ['haslo'] );
+			self::setHaslo ( $_SESSION ['haslo'] );
 			$sql = "SELECT * FROM uzytkownicy WHERE user = 'getLogin()'";
 			$query = $this->conn->prepare ( $sql );
 			$query->execute ();
 			$result = $query->fetch ( PDO::FETCH_ASSOC );
 			if (! empty ( $result ))
 			{
-				if (password_verify ( getHaslo (), $result ['pass'] ))
+				if (password_verify ( self::getHaslo (), $result ['pass'] ))
 				{
-					setId ( $result ['id'] );
-					$_SESSION ['id'] = getId ();
-					setEmail ( $result ['email'] );
-					$_SESSION ['email'] = getEmail ();
-					setAccess ( $result ['access'] );
-					$_SESSION ['access'] = getAccess ();
-					setLoged ( TRUE );
+					self::setId ( $result ['id'] );
+					$_SESSION ['id'] = self::getId ();
+					self::setEmail ( $result ['email'] );
+					$_SESSION ['email'] = self::getEmail ();
+					self::setAccess ( $result ['access'] );
+					$_SESSION ['access'] = self::getAccess ();
+					self::setLoged ( TRUE );
 					$_SESSION ['loged'] = TRUE;
 				}
 			}
@@ -57,28 +57,28 @@ class User extends Model
 	 * @param string $haslo
 	 * @return boolean
 	 */
-	private function logIn($login, $haslo)
+	public function logIn($login, $haslo)
 	{
 		$_SESSION ['login'] = addslashes ( $login );
-		setLogin ( $_SESSION ['login'] );
+		self::setLogin ( $_SESSION ['login'] );
 		$_SESSION ['haslo'] = addslashes ( $haslo );
-		setHaslo ( $_SESSION ['haslo'] );
+		self::setHaslo ( $_SESSION ['haslo'] );
 		$sql = "SELECT * FROM uzytkownicy WHERE user = 'getLogin()'";
 		$query = $this->conn->prepare ( $sql );
-		$query->bindValue ( 'user', getLogin () );
+		$query->bindValue ( 'user', self::getLogin () );
 		$query->execute ();
 		$result = $query->fetch ( PDO::FETCH_ASSOC );
 		if (! empty ( $result ))
 		{
-			if (password_verify ( getHaslo (), $result ['pass'] ))
+			if (password_verify ( self::getHaslo (), $result ['pass'] ))
 			{
-				setId ( $result ['id'] );
-				$_SESSION ['id'] = getId ();
-				setEmail ( $result ['email'] );
-				$_SESSION ['email'] = getEmail ();
-				setAccess ( $result ['access'] );
-				$_SESSION ['access'] = getAccess ();
-				setLoged ( TRUE );
+				self::setId ( $result ['id'] );
+				$_SESSION ['id'] = self::getId ();
+				self::setEmail ( $result ['email'] );
+				$_SESSION ['email'] = self::getEmail ();
+				self::setAccess ( $result ['access'] );
+				$_SESSION ['access'] = self::getAccess ();
+				self::setLoged ( TRUE );
 				$_SESSION ['loged'] = TRUE;
 				return TRUE;
 			}
@@ -103,11 +103,11 @@ class User extends Model
 
 	private function logOut()
 	{
-		if (getLoged ())
+		if (self::getLoged ())
 		{
-			setLoged ( FALSE );
-			setId ( 0 );
-			setAccess ( 0 );
+			self::setLoged ( FALSE );
+			self::setId ( 0 );
+			self::setAccess ( 0 );
 			session_destroy ();
 			header ( "Location: {$_SERVER['PHP_SELF']}" );
 			return true;
