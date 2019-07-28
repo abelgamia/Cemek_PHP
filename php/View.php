@@ -211,12 +211,12 @@ self::showStyle ( self::$style );
 
 	public static function showMainSekcjaEnd()
 	{
-		?></section><?php
+		;?></section><?php
 	}
 
 	public static function showEnd()
 	{
-		?></main>
+		;?></main>
 			<footer id="stopka">
 				<a href="index.php" id="stopka_logo">
 					<div><?= self::$stopka; ?></div>
