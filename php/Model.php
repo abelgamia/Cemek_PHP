@@ -18,10 +18,6 @@ abstract class Model
 			'user' => 'root',
 			'password' => '',
 			'database' => 'cemek'
-		// 'host'     => 'sql.5v.pl',
-		// 'user'     => 'db-user45519',
-		// 'password' => 'becederia1',
-		// 'database' => 'db-user45519'
 	);
 	/**
 	 * Konstruktor klasy Baza
