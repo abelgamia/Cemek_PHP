@@ -1,21 +1,20 @@
 html, body {
 	color: #180707;
-	background-color: #DECD9C;
+	background-color:#FFFFF0;
+	/* background-color:	#e024cf; */
 }
-
 #zero {
 	width: 1220px;
 	min-height: 800px;
 	margin: 6px auto;
-	padding: 10px;
+	padding:10px;
 	border-radius: 14px;
 	box-shadow: 1px 1px 9px 3px;
 }
-
 #jeden {
 	width: 99%;
 	min-height: 740px;
-	margin: auto;
+	margin:auto;
 	padding: 4px;
 	border-radius: 14px;
 	box-shadow: 1px -1px 9px 4px;
@@ -24,46 +23,41 @@ html, body {
 /* 						 						 						header id=dach: 				 */
 #dach {
 	box-shadow: 2px -2px 9px 2px;
-	border-radius: 14px;
-	margin: 8px 4px 4px 4px;
+  border-radius: 14px;
+	margin:  8px 4px 4px 4px;
 }
-
 #strych {
 	height: 95px;
 	text-align: center;
 	text-decoration: none;
 	display: flex;
-	flex-direction: row;
+	flex-direction:row;
 	justify-content: space-around;
 	padding-top: 10px;
 }
 
 #lewy {
 	height: 90px;
-	width: 32%;
-	box-shadow: inset -1px 0px 8px 2px;
-	border-radius: 14px;
+  width: 32%;
+  box-shadow: inset -1px 0px 8px 2px;
+  border-radius: 14px;
 }
-
 #center {
 	height: 90px;
-	width: 32%;
-	box-shadow: 0px -1px 8px 2px;
-	border-radius: 14px;
+  width: 32%;
+  box-shadow: 0px -1px 8px 2px;
+  border-radius: 14px;
 }
-
 #logo {
 	text-decoration: none;
-	font-size: 48px;
-	text-shadow: 2px 1px 2px;
-	margin-top: 10px;
-	text-align: center;
+  font-size: 48px ;
+  text-shadow: 2px 1px 2px;
+  margin-top: 10px;
+  text-align:center;
 }
-
 #logo :hover {
-	text-shadow: 6px 4px 7px;
+	text-shadow: 6px 4px 7px ;
 }
-
 #prawy {
 	height: 90px;
 	width: 32%;
@@ -73,7 +67,7 @@ html, body {
 
 #linki {
 	height: 40px;
-	margin: 8px 4px 4px 4px;
+	margin:  8px 4px 4px 4px;
 	padding-bottom: 10px;
 	font-size: 32px;
 	text-align: center;
@@ -86,16 +80,14 @@ html, body {
 #stopka {
 	height: 26px;
 	text-align: center;
-	margin: 8px 4px 4px 4px;
+	margin:  8px 4px 4px 4px;
 	border-radius: 14px;
 	box-shadow: -2px 2px 9px 2px;
 }
-
 #stopka_logo {
 	text-decoration: none;
-	text-shadow: 2px 1px 7px;
+  text-shadow: 2px 1px 7px;
 }
-
 #stopka_logo :hover {
 	text-shadow: -1px 2px 9px;
 }

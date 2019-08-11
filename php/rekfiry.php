@@ -8,6 +8,6 @@ require 'php/model/Spis.php';
 require 'php/model/User.php';
 require 'php/template/end.php';
 require 'php/template/front.php';
-require 'php/template/top.php';
+require 'php/template/toptop.php';
 require 'php/view/Zwykly.php';
 // require 'php/view/View.php';

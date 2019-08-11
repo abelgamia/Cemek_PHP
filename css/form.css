@@ -1,124 +1,117 @@
 /* ---------------Formularz logowania */
 #form {
-	margin-top: 8px;
+  margin-top: 8px;
 }
 
 /* ----------------------------login - pole wypełniane przez "usera" */
 #login {
-	width: 110px;
-	height: 20px;
-	background-color: #DECD9C;
-	box-shadow: 1px -1px 3px 1px inset;
-	border-radius: 6px;
-	text-shadow: 2px 1px 3px;
-	cursor: pointer;
+  width: 110px;
+  height: 20px;
+  background-color:#DECD9C;
+  box-shadow: 1px -1px 3px 1px inset;
+  border-radius: 6px;
+  text-shadow: 2px 1px 3px;
+  cursor: pointer;
 }
-
 #login:hover {
-	background-color: #cdbc8b;
-	text-shadow: 2px 1px 3px;
+  background-color:#cdbc8b;
+  text-shadow: 2px 1px 3px;
 }
-
 #login:active {
-	background-color: white;
+  background-color:white;
 }
 /* ----------------------------login - pole wypełniane przez "usera" */
 
 /* ----------------------------pass - pole wypełniane przez "usera" */
 #pass {
-	width: 110px;
-	height: 20px;
-	background-color: #DECD9C;
-	box-shadow: 1px -1px 3px 1px inset;
-	border-radius: 6px;
-	text-shadow: 2px 1px 3px;
-	cursor: pointer;
+  width: 110px;
+  height: 20px;
+  background-color:#DECD9C;
+  box-shadow: 1px -1px 3px 1px inset;
+  border-radius: 6px;
+  text-shadow: 2px 1px 3px;
+  cursor: pointer;
 }
-
 #pass:hover {
-	background-color: #cdbc8b;
+  background-color:#cdbc8b;
 }
-
 #pass:active {
-	background-color: white;
+  background-color:white;
 }
 /* ----------------------------pass - pole wypełniane przez "usera" */
 
 /* ----------------------------przycisk uruchamiający logowanie */
 .button_login {
-	width: 110px;
-	height: 22px;
-	background-color: #cdbc8b;
-	box-shadow: 1px -1px 3px 1px;
-	border-radius: 6px;
-	text-shadow: 2px 1px 3px;
-	cursor: pointer;
+  width: 110px;
+  height: 22px;
+  background-color:#cdbc8b;
+  box-shadow: 1px -1px 3px 1px;
+  border-radius: 6px;
+  text-shadow: 2px 1px 3px;
+  cursor: pointer;
 }
-
 .button_login:hover {
-	background-color: #DECD9C;
-	text-shadow: 2px 1px 3px;
+  background-color:#DECD9C;
+  text-shadow: 2px 1px 3px;
 }
 /* ----------------------------przycisk uruchamiający logowanie */
 
 /* -------------------miejsce wyświetlania się "errora" */
 .mark {
-	font-size: 1em;
-	line-height: 1.2em;
+  font-size: 1em;
+  line-height: 1.2em;
 }
 /* -------------------miejsce wyświetlania się "errora" */
 /* ---------------Koniec formularza logowania */
 
 /* ----------------------------Formularz rejestracji */
+
 .change {
-	width: 35%;
-	margin: 30px 70px;
-	display: inline;
+  width: 35%;
+  margin: 30px 70px;
+  display: inline;
 }
 
 fieldset {
-	width: 35%;
-	margin: 20px auto;
+  width: 35%;
+  margin: 20px auto;
 }
 
 /* ------------input - pole wypełniane przez "usera" */
 .input {
-	width: 180px;
-	height: 24px;
-	font-size: 1.1em;
-	background-color: #DECD9C;
-	box-shadow: 1px -1px 3px 1px inset;
-	border-radius: 6px;
-	cursor: pointer;
+  width: 180px;
+  height: 24px;
+  font-size: 1.1em;
+  background-color:#DECD9C;
+  box-shadow: 1px -1px 3px 1px inset;
+  border-radius: 6px;
+  cursor: pointer;
 }
-
 .input:hover {
-	background-color: #cdbc8b;
+  background-color:#cdbc8b;
 }
-
 .input:focus {
-	background-color: #efde8d;
+  background-color:#efde8d;
 }
 /* ----------input - pole wypełniane przez "usera" */
 
 /* ________Przycisk aktywujący________ */
 .button {
-	width: 220px;
-	height: 22px;
-	margin: 4px;
-	background-color: #cdbc8b;
-	box-shadow: 1px -1px 3px 1px;
-	border-radius: 6px;
-	text-shadow: 2px 1px 3px;
-	cursor: pointer;
+  width: 220px;
+  height: 22px;
+  margin: 4px;
+  background-color:#cdbc8b;
+  box-shadow: 1px -1px 3px 1px;
+  border-radius: 6px;
+  text-shadow: 2px 1px 3px;
+  cursor: pointer;
 }
-
 .button:hover {
-	background-color: #DECD9C;
-	text-shadow: 2px 1px 3px;
+  background-color:#DECD9C;
+  text-shadow: 2px 1px 3px;
 }
 /* ________Przycisk aktywujący________ */
 /* ----------------------------Koniec formularza rejestracji */
 #unloged {
-	margin-top: 6px;
+  margin-top: 6px;
 }

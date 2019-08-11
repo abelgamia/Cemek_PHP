@@ -319,7 +319,7 @@ class User extends Model
 	 *
 	 * @param mixed $id
 	 */
-	public function setId($id)
+	private function setId($id)
 	{
 		$this->id = $id;
 	}
@@ -355,7 +355,7 @@ class User extends Model
 	 *
 	 * @param mixed $haslo
 	 */
-	public function setHaslo($haslo)
+	private function setHaslo($haslo)
 	{
 		$this->haslo = $haslo;
 	}
@@ -373,7 +373,7 @@ class User extends Model
 	 *
 	 * @param mixed $email
 	 */
-	public function setEmail($email)
+	private function setEmail($email)
 	{
 		$this->email = $email;
 	}
@@ -409,7 +409,7 @@ class User extends Model
 	 *
 	 * @param boolean $loged
 	 */
-	public function setLoged($loged)
+	private function setLoged($loged)
 	{
 		$this->loged = $loged;
 	}
