@@ -70,9 +70,9 @@ class View {
 	}
 	public function showFormLogIn() {
 		echo "<form name='' method='POST' action=''>";
-		echo "<input name='login' type='text' value='' placeholder='Login' required>\n";
-		echo "<input name='pass' type='password' value='' placeholder='Pass' required>\n";
-		echo "<input name='log_in' type='submit' value='Log_In' placeholder='' required>\n";
+		echo "<input name='form_login[login]' type='text' value='' placeholder='Login' required>\n";
+		echo "<input name='form_login[pass]' type='password' value='' placeholder='Pass' required>\n";
+		echo "<input name='form_login[submit]' type='submit' value='Login' placeholder='' required>\n";
 		echo "</form>\n";
 	}
 	public function showLinki() {

@@ -34,27 +34,27 @@ class Config {
 				array (
 						'Alfa',
 						'alfa',
-						'alfa.php'
+						'index.php?menu=1'
 				),
 				array (
 						'Bravo',
 						'bravo',
-						'bravo.php'
+						'index.php?menu=2'
 				),
 				array (
 						'Certo',
 						'certo',
-						'certo.php'
+						'index.php?menu=3'
 				),
 				array (
 						'Delta',
 						'delta',
-						'delta.php'
+						'index.php?menu=4'
 				),
 				array (
 						'Echo',
 						'echo',
-						'echo.php'
+						'index.php?menu=5'
 				)
 		)
 	);

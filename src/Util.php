@@ -9,7 +9,7 @@ namespace src;
  */
 class Util {
 	public function __construct() {
-		echo 'Util<br>';
+// 		echo 'Util<br>';
 	}
 	public static function self() {
 		$wyraz = array('/Cemek/', '.php');
