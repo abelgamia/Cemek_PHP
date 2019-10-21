@@ -1,13 +1,13 @@
 <?php
-require 'php/Control.php';
-require 'php/Model.php';
-require 'php/View.php';
-require 'php/Util.php';
-require 'php/control/Control_1.php';
-require 'php/model/Spis.php';
+// ------------------------------------------
+require 'php/config/Config.php';
+// ----
+require 'php/control/Control.php';
+// ----
+require 'php/model/Model.php';
 require 'php/model/User.php';
-require 'php/template/end.php';
-require 'php/template/front.php';
-require 'php/template/toptop.php';
-require 'php/view/Zwykly.php';
-// require 'php/view/View.php';
+// ----
+require 'php/util/Util.php';
+// ----
+require 'php/view/View.php';
+// ------------------------------------------

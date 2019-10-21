@@ -1,51 +1,43 @@
 <?php
-
 namespace php\model;
 
 use PDO;
-use php\Model;
-use function php\model\User\setHaslo;
-use function php\model\User\setLogin;
-
 /**
  *
  * @author Edi
- *        
+ *
  */
-class User extends Model
-{
+class User extends Model {
 	private $id;
 	private $login;
-	private $haslo;
+	private $pass;
 	private $email;
 	private $access;
 	private $loged;
 
-	function __construct()
-	{
-		parent::__construct ();
-		if (! empty ( $_SESSION ['login'] ) && ! empty ( $_SESSION ['haslo'] ))
-		{
-			addslashes ( $_SESSION ['login'] );
-			self::setLogin ( $_SESSION ['login'] );
-			addslashes ( $_SESSION ['haslo'] );
-			self::setHaslo ( $_SESSION ['haslo'] );
+	/**
+	 */
+	public function __construct() {
+		parent::__construct();
+		if (! empty($_SESSION['login']) && ! empty($_SESSION['haslo'])) {
+			addslashes($_SESSION['login']);
+			$this->setLogin($_SESSION['login']);
+			addslashes($_SESSION['haslo']);
+			$this->setPass($_SESSION['haslo']);
 			$sql = "SELECT * FROM uzytkownicy WHERE user = 'getLogin()'";
-			$query = $this->conn->prepare ( $sql );
-			$query->execute ();
-			$result = $query->fetch ( PDO::FETCH_ASSOC );
-			if (! empty ( $result ))
-			{
-				if (password_verify ( self::getHaslo (), $result ['pass'] ))
-				{
-					self::setId ( $result ['id'] );
-					$_SESSION ['id'] = self::getId ();
-					self::setEmail ( $result ['email'] );
-					$_SESSION ['email'] = self::getEmail ();
-					self::setAccess ( $result ['access'] );
-					$_SESSION ['access'] = self::getAccess ();
-					self::setLoged ( TRUE );
-					$_SESSION ['loged'] = TRUE;
+			$query = $this->conn->prepare($sql);
+			$query->execute();
+			$result = $query->fetch(PDO::FETCH_ASSOC);
+			if (! empty($result)) {
+				if (password_verify($this->getPass(),$result['pass'])) {
+					$this->setId($result['id']);
+					$_SESSION['id'] = $this->getId();
+					$this->setEmail($result['email']);
+					$_SESSION['email'] = $this->getEmail();
+					$this->setAccess($result['access']);
+					$_SESSION['access'] = $this->getAccess();
+					$this->setLoged(TRUE);
+					$_SESSION['loged'] = TRUE;
 				}
 			}
 		}
@@ -57,261 +49,198 @@ class User extends Model
 	 * @param string $haslo
 	 * @return boolean
 	 */
-	public function logIn($login, $haslo)
-	{
-		$_SESSION ['login'] = addslashes ( $login );
-		self::setLogin ( $_SESSION ['login'] );
-		$_SESSION ['haslo'] = addslashes ( $haslo );
-		self::setHaslo ( $_SESSION ['haslo'] );
+	public function logIn($login, $haslo) {
+		$_SESSION['login'] = addslashes($login);
+		$this->setLogin($_SESSION['login']);
+		$_SESSION['haslo'] = addslashes($haslo);
+		$this->setPass($_SESSION['haslo']);
 		$sql = "SELECT * FROM uzytkownicy WHERE user = 'getLogin()'";
-		$query = $this->conn->prepare ( $sql );
-		$query->bindValue ( 'user', self::getLogin () );
-		$query->execute ();
-		$result = $query->fetch ( PDO::FETCH_ASSOC );
-		if (! empty ( $result ))
-		{
-			if (password_verify ( self::getHaslo (), $result ['pass'] ))
-			{
-				self::setId ( $result ['id'] );
-				$_SESSION ['id'] = self::getId ();
-				self::setEmail ( $result ['email'] );
-				$_SESSION ['email'] = self::getEmail ();
-				self::setAccess ( $result ['access'] );
-				$_SESSION ['access'] = self::getAccess ();
-				self::setLoged ( TRUE );
-				$_SESSION ['loged'] = TRUE;
+		$query = $this->conn->prepare($sql);
+		$query->bindValue('user',$this->getLogin());
+		$query->execute();
+		$result = $query->fetch(PDO::FETCH_ASSOC);
+		if (! empty($result)) {
+			if (password_verify($this->getPass(),$result['pass'])) {
+				$this->setId($result['id']);
+				$_SESSION['id'] = $this->getId();
+				$this->setEmail($result['email']);
+				$_SESSION['email'] = $this->getEmail();
+				$this->setAccess($result['access']);
+				$_SESSION['access'] = $this->getAccess();
+				$this->setLoged(TRUE);
+				$_SESSION['loged'] = TRUE;
 				return TRUE;
-			}
-			else
-			{
-				$_SESSION ['blad_haslo'] = 'Złe haslo';
-				unset ( $_SESSION ['haslo'] );
-				unset ( $_SESSION ['login'] );
+			} else {
+				$_SESSION['blad_haslo'] = 'Złe haslo';
+				unset($_SESSION['haslo']);
+				unset($_SESSION['login']);
 				return false;
 			}
-		}
-		else
-		{
-			$_SESSION ['blad_login'] = 'Zły login';
-			unset ( $_SESSION ['login'] );
-			unset ( $_SESSION ['haslo'] );
+		} else {
+			$_SESSION['blad_login'] = 'Zły login';
+			unset($_SESSION['login']);
+			unset($_SESSION['haslo']);
 			return false;
 		}
-		header ( "Location: {$_SERVER['PHP_SELF']}" );
+		header("Location:{$_SERVER['PHP_SELF']}");
 		$this->conn = null;
 	}
 
-	private function logOut()
-	{
-		if (self::getLoged ())
-		{
-			self::setLoged ( FALSE );
-			self::setId ( 0 );
-			self::setAccess ( 0 );
-			session_destroy ();
-			header ( "Location: {$_SERVER['PHP_SELF']}" );
+	public function logOut() {
+		if ($this->getLoged()) {
+			$this->setLoged(FALSE);
+			$this->setId(0);
+			$this->setAccess(0);
+			session_destroy();
+			header("Location:{$_SERVER['PHP_SELF']}");
 			return true;
-		}
-		else
-		{
+		} else {
 			return false;
 		}
 	}
 
-	private function register($new_login, $new_email, $new_haslo, $new_haslo2, $regulamin)
-	{
-		$login = addslashes ( $new_login );
-		$email = addslashes ( $new_email );
-		$haslo = addslashes ( $new_haslo );
-		$haslo2 = addslashes ( $new_haslo2 );
+	public function register($new_login, $new_email, $new_haslo, $new_haslo2, $regulamin) {
+		$login = addslashes($new_login);
+		$email = addslashes($new_email);
+		$haslo = addslashes($new_haslo);
+		$haslo2 = addslashes($new_haslo2);
 		$wszystko_OK = true;
-		// -------------------------------------
-		if ((strlen ( $login ) < 3) || (strlen ( $login ) > 20)) // jeżeli nick krótszy niż 3 lub dłuższy niż 20 to
-		{
-			$wszystko_OK = false; // ustawienie flagi udanej walidacji na false
-			$_SESSION ['e_login'] = "Nick musi posiadać od 3 do 20 znaków!"; // ustawienie zmiennej e_nick na tekst błędu
+		if ((strlen($login) < 3) || (strlen($login) > 20)) {
+			$wszystko_OK = false;
+			$_SESSION['e_login'] = "Nick musi posiadać od 3 do 20 znaków!";
 		}
-
-		if (ctype_alnum ( $login ) == false) // jeżeli nick posiada inne znaki niż alfa to
-		{
-			$wszystko_OK = false; // ustawienie flagi udanej walidacji na false
-			$_SESSION ['e_login'] = "Nick musi składać się z znaków alfanumerycznych"; // ustawienie zmiennej e_nick na tekst błędu
+		if (ctype_alnum($login) == false) {
+			$wszystko_OK = false;
+			$_SESSION['e_login'] = "Nick musi składać się z znaków alfanumerycznych";
 		}
-		// -------------------------------------
-		$emailB = filter_var ( $email, FILTER_SANITIZE_EMAIL ); // do zmiennej $emailB ladujemy $email ale bez niedozwolonych znaków
-
-		if ((filter_var ( $emailB, FILTER_VALIDATE_EMAIL ) == false) || ($emailB != $email)) // jeżeli zmienna $emailB po walidacji daje false lub zmienna
-		{ //  $emailB jest różna od zmiennej $email to
-			$wszystko_OK = false; // ustawienie flagi udanej walidacji na false
-			$_SESSION ['e_email'] = "Podaj poprawny adres e-mail!"; // ustawienie zmiennej e_email na tekst błędu
+		$emailB = filter_var($email,FILTER_SANITIZE_EMAIL);
+		if ((filter_var($emailB,FILTER_VALIDATE_EMAIL) == false) || ($emailB != $email)) {
+			$wszystko_OK = false;
+			$_SESSION['e_email'] = "Podaj poprawny adres e-mail!";
 		}
-		// -------------------------------------
-		if ((strlen ( $haslo ) < 6) || (strlen ( $haslo2 ) > 20)) // jeżeli $haslo1 krótsze niż 6 lub dłuższy niż 20 to
-		{
-			$wszystko_OK = false; // ustawienie flagi udanej walidacji na false
-			$_SESSION ['e_haslo'] = "Hasło musi składać się od 6 do 20 znaków."; // ustawienie zmiennej e_haslo na tekst błędu
+		if ((strlen($haslo) < 6) || (strlen($haslo2) > 20)) {
+			$wszystko_OK = false;
+			$_SESSION['e_haslo'] = "Hasło musi składać się od 6 do 20 znaków.";
 		}
-		if ($haslo != $haslo2) // jeżeli $haslo1 krótsze niż 6 lub dłuższy niż 20 to
-		{
-			$wszystko_OK = false; // ustawienie flagi udanej walidacji na false
-			$_SESSION ['e_haslo'] = "Hasła nie są identyczne."; // ustawienie zmiennej e_haslo na tekst błędu
+		if ($haslo != $haslo2) {
+			$wszystko_OK = false;
+			$_SESSION['e_haslo'] = "Hasła nie są identyczne.";
 		}
-
-		$haslo_hash = password_hash ( $haslo, PASSWORD_DEFAULT ); // do zmiennej $haslo_hash ładujemy wynik hashowania $haslo1
-		// -------------------------------------
-		// akceptacja regulaminu
-		if (! isset ( $regulamin ))
-		{
-			$wszystko_OK = false; // ustawienie flagi udanej walidacji na false
-			$_SESSION ['e_regulamin'] = "Zaakceptuj regulamin."; // ustawienie zmiennej e_regulamin na tekst błędu
+		$haslo_hash = password_hash($haslo,PASSWORD_DEFAULT);
+		if (! isset($regulamin)) {
+			$wszystko_OK = false;
+			$_SESSION['e_regulamin'] = "Zaakceptuj regulamin.";
 		}
-		// -------------------------------------
-		// $sql = "SELECT * FROM uzytkownicy WHERE email = '$_SESSION['new_email']'";
 		$sql = "SELECT email FROM uzytkownicy WHERE email = '$email'";
-		$query = $this->conn->prepare ( $sql );
-		$query->bindValue ( 'email', $email );
-		$query->execute ();
-		$result = $query->fetch ( PDO::FETCH_ASSOC );
-		if (! empty ( $result ))
-		{
-			$wszystko_OK = false; // ustawienie flagi udanej walidacji na false
-			$_SESSION ['e_email'] = "Istnieje już konto przypisane do tego adresu e-mail!"; // ustawienie zmiennej e_email na tekst błędu
+		$query = $this->conn->prepare($sql);
+		$query->bindValue('email',$email);
+		$query->execute();
+		$result = $query->fetch(PDO::FETCH_ASSOC);
+		if (! empty($result)) {
+			$wszystko_OK = false;
+			$_SESSION['e_email'] = "Istnieje już konto przypisane do tego adresu e-mail!";
 		}
-		// -------------------------------------
 		$sql = "SELECT user FROM uzytkownicy WHERE user = '$login'";
-		$query = $this->conn->prepare ( $sql );
-		$query->bindValue ( 'user', $login );
-		$query->execute ();
-		$result = $query->fetch ( PDO::FETCH_ASSOC );
-		if (! empty ( $result ))
-		{
-			$wszystko_OK = false; // ustawienie flagi udanej walidacji na false
-			$_SESSION ['e_login'] = "Istnieje już gracz o takim nicku! Wybierz inny."; // ustawienie zmiennej e_nick na tekst błędu
+		$query = $this->conn->prepare($sql);
+		$query->bindValue('user',$login);
+		$query->execute();
+		$result = $query->fetch(PDO::FETCH_ASSOC);
+		if (! empty($result)) {
+			$wszystko_OK = false;
+			$_SESSION['e_login'] = "Istnieje już gracz o takim nicku! Wybierz inny.";
 		}
-		// -------------------------------------
-		if ($wszystko_OK == true) // jeżeli flaga $wszystko_OK jest true to
-		{
+		if ($wszystko_OK == true) {
 			$sql = "INSERT INTO uzytkownicy VALUES (NULL, '$login', '$haslo_hash', '$email', '1', '')";
-			$query = $this->conn->prepare ( $sql );
-			$query->execute ();
-			$_SESSION ['udanarejestracja'] = true; // ustaw zmienną udana rejestracja na true
-			header ( "Location: {$_SERVER['PHP_SELF']}" );
+			$query = $this->conn->prepare($sql);
+			$query->execute();
+			$_SESSION['udanarejestracja'] = true;
+			header("Location: {$_SERVER['PHP_SELF']}");
 		}
 		$this->conn = null;
 	}
 
-	private function chengeEmail($new_email, $haslo, $potwierdz)
-	{
-		if ($this->czy_zalogowany == true)
-		{
-			$email = addslashes ( $new_email );
-			// -------------------------------------
-			$emailB = filter_var ( $email, FILTER_SANITIZE_EMAIL ); // do zmiennej $emailB ladujemy $email ale bez niedozwolonych znaków
+	public function chengeEmail($new_email, $haslo, $potwierdz) {
+		if ($this->getLoged == true) { //???????????????????????????????????
+			$email = addslashes($new_email);
+			$emailB = filter_var($email,FILTER_SANITIZE_EMAIL);
 
-			if ((filter_var ( $emailB, FILTER_VALIDATE_EMAIL ) == false) || ($emailB != $email)) // jeżeli zmienna $emailB po walidacji daje false lub zmienna
-			{
-				$_SESSION ['e_change_email'] = "Podaj poprawny adres e-mail!"; // ustawienie zmiennej e_email na tekst błędu
-				header ( "Location: {$_SERVER['PHP_SELF']}" );
-			}
-			else
-			{
+			if ((filter_var($emailB,FILTER_VALIDATE_EMAIL) == false) || ($emailB != $email)) {
+				$_SESSION['e_change_email'] = "Podaj poprawny adres e-mail!";
+				header("Location: {$_SERVER['PHP_SELF']}");
+			} else {
 				$sql = "SELECT email FROM uzytkownicy WHERE email = '$email'";
-				$query = $this->conn->prepare ( $sql );
-				$query->bindValue ( 'email', $email );
-				$query->execute ();
-				$result = $query->fetch ( PDO::FETCH_ASSOC );
-				if (! empty ( $result ))
-				{
-					$_SESSION ['e_change_email'] = "Istnieje już konto przypisane do tego adresu e-mail!"; // ustawienie zmiennej e_email na tekst błędu
-					header ( "Location: {$_SERVER['PHP_SELF']}" );
-				}
-				else
-				{
-					if (! isset ( $potwierdz ))
-					{ // ustawienie flagi udanej walidacji na false
-						$_SESSION ['e_potwierdz'] = "Zaakceptuj potwierdz."; // ustawienie zmiennej e_regulamin na tekst błędu
-						header ( "Location: {$_SERVER['PHP_SELF']}" );
+				$query = $this->conn->prepare($sql);
+				$query->bindValue('email',$email);
+				$query->execute();
+				$result = $query->fetch(PDO::FETCH_ASSOC);
+				if (! empty($result)) {
+					$_SESSION['e_change_email'] = "Istnieje już konto przypisane do tego adresu e-mail!";
+					header("Location: {$_SERVER['PHP_SELF']}");
+				} else {
+					if (! isset($potwierdz)) {
+						$_SESSION['e_potwierdz'] = "Zaakceptuj potwierdz.";
+						header("Location: {$_SERVER['PHP_SELF']}");
 						return false;
-					}
-					else
-					{
-						if ($this->haslo == $haslo)
-						{
+					} else {
+						if ($this->haslo == $haslo) {
 							$sql = "UPDATE uzytkownicy SET email = '$email' WHERE user = 'getLogin()'";
-							$query = $this->conn->prepare ( $sql );
-							$query->bindValue ( 'user', getLogin () );
-							$query->execute ();
-							$_SESSION ['zmiany'] = "Email został zmieniony na " . $email;
-							header ( "Location: {$_SERVER['PHP_SELF']}" );
+							$query = $this->conn->prepare($sql);
+							$query->bindValue('user',getLogin());
+							$query->execute();
+							$_SESSION['zmiany'] = "Email został zmieniony na " . $email;
+							header("Location: {$_SERVER['PHP_SELF']}");
 							return true;
 						}
-						$_SESSION ['e_change_email_haslo'] = "Nieprawidłowe hasło";
-						header ( "Location: {$_SERVER['PHP_SELF']}" );
+						$_SESSION['e_change_email_haslo'] = "Nieprawidłowe hasło";
+						header("Location: {$_SERVER['PHP_SELF']}");
 					}
 				}
 			}
-		}
-		else
-		{
+		} else {
 			return false;
 		}
 	}
 
-	private function chengeHaslo($old_haslo, $new_haslo, $new_haslo2, $potwierdz)
-	{
-		if ($this->czy_zalogowany == true)
-		{
-			if ($this->haslo == $old_haslo)
-			{
-				$haslo = addslashes ( $new_haslo );
-				$haslo2 = addslashes ( $new_haslo2 );
-				if ((strlen ( $haslo ) < 6) || (strlen ( $haslo2 ) > 20)) // jeżeli $haslo1 krótsze niż 6 lub dłuższy niż 20 to
+	public function chengeHaslo($old_haslo, $new_haslo, $new_haslo2, $potwierdz) {
+		if ($this->czy_zalogowany == true) {
+			if ($this->haslo == $old_haslo) {
+				$haslo = addslashes($new_haslo);
+				$haslo2 = addslashes($new_haslo2);
+				if ((strlen($haslo) < 6) || (strlen($haslo2) > 20))
 				{
-					$_SESSION ['e_change_haslo'] = "Hasło musi składać się od 6 do 20 znaków."; // ustawienie zmiennej e_haslo na tekst błędu
-					header ( "Location: {$_SERVER['PHP_SELF']}" );
-				}
-				else
-				{
-					if ($new_haslo != $new_haslo2)
-					{ // ustawienie flagi udanej walidacji na false
-						$_SESSION ['e_change_haslo2'] = "Hasła nie są identyczne."; // ustawienie zmiennej e_regulamin na tekst błędu
-						header ( "Location: {$_SERVER['PHP_SELF']}" );
-					}
-					else
-					{
-						$haslo_hash = password_hash ( $haslo, PASSWORD_DEFAULT ); // do zmiennej $haslo_hash ładujemy wynik hashowania $haslo1
+					$_SESSION['e_change_haslo'] = "Hasło musi składać się od 6 do 20 znaków.";
+					header("Location: {$_SERVER['PHP_SELF']}");
+				} else {
+					if ($new_haslo != $new_haslo2) {
+						$_SESSION['e_change_haslo2'] = "Hasła nie są identyczne.";
+						header("Location: {$_SERVER['PHP_SELF']}");
+					} else {
+						$haslo_hash = password_hash($haslo,PASSWORD_DEFAULT);
 						$sql = "UPDATE uzytkownicy SET pass = '$haslo_hash' WHERE user = '$this->login'";
-						$query = $this->conn->prepare ( $sql );
-						$query->execute ();
-						$_SESSION ['zmiany'] = "Hasło zostało zmienionye";
-						$_SESSION ['haslo'] = $this->haslo = $haslo;
-						header ( "Location: {$_SERVER['PHP_SELF']}" );
+						$query = $this->conn->prepare($sql);
+						$query->execute();
+						$_SESSION['zmiany'] = "Hasło zostało zmienionye";
+						$_SESSION['haslo'] = $this->haslo = $haslo;
+						header("Location: {$_SERVER['PHP_SELF']}");
 						return true;
 					}
 				}
+			} else {
+				$_SESSION['e_change_haslo_haslo'] = "Złe hasło.";
+				header("Location: {$_SERVER['PHP_SELF']}");
 			}
-			else
-			{
-				$_SESSION ['e_change_haslo_haslo'] = "Złe hasło.";
-				header ( "Location: {$_SERVER['PHP_SELF']}" );
-			}
-		}
-		else
-		{
+		} else {
 			return false;
 		}
 	}
 
-	private function delUser()
-	{
-	}
+	public function delUser() {}
 
 	/**
 	 *
 	 * @return mixed
 	 */
-	public function getId()
-	{
+	public function getId() {
 		return $this->id;
 	}
 
@@ -319,8 +248,7 @@ class User extends Model
 	 *
 	 * @param mixed $id
 	 */
-	private function setId($id)
-	{
+	public function setId($id) {
 		$this->id = $id;
 	}
 
@@ -328,8 +256,7 @@ class User extends Model
 	 *
 	 * @return mixed
 	 */
-	public function getLogin()
-	{
+	public function getLogin() {
 		return $this->login;
 	}
 
@@ -337,8 +264,7 @@ class User extends Model
 	 *
 	 * @param mixed $login
 	 */
-	public function setLogin($login)
-	{
+	public function setLogin($login) {
 		$this->login = $login;
 	}
 
@@ -346,26 +272,23 @@ class User extends Model
 	 *
 	 * @return mixed
 	 */
-	public function getHaslo()
-	{
-		return $this->haslo;
+	public function getPass() {
+		return $this->pass;
 	}
 
 	/**
 	 *
-	 * @param mixed $haslo
+	 * @param mixed $pass
 	 */
-	private function setHaslo($haslo)
-	{
-		$this->haslo = $haslo;
+	public function setPass($pass) {
+		$this->pass = $pass;
 	}
 
 	/**
 	 *
 	 * @return mixed
 	 */
-	public function getEmail()
-	{
+	public function getEmail() {
 		return $this->email;
 	}
 
@@ -373,8 +296,7 @@ class User extends Model
 	 *
 	 * @param mixed $email
 	 */
-	private function setEmail($email)
-	{
+	public function setEmail($email) {
 		$this->email = $email;
 	}
 
@@ -382,8 +304,7 @@ class User extends Model
 	 *
 	 * @return mixed
 	 */
-	public function getAccess()
-	{
+	public function getAccess() {
 		return $this->access;
 	}
 
@@ -391,27 +312,23 @@ class User extends Model
 	 *
 	 * @param mixed $access
 	 */
-	private function setAccess($access)
-	{
+	public function setAccess($access) {
 		$this->access = $access;
 	}
 
 	/**
 	 *
-	 * @return boolean
+	 * @return mixed
 	 */
-	public function getLoged()
-	{
+	public function getLoged() {
 		return $this->loged;
 	}
 
 	/**
 	 *
-	 * @param boolean $loged
+	 * @param mixed $loged
 	 */
-	private function setLoged($loged)
-	{
+	public function setLoged($loged) {
 		$this->loged = $loged;
 	}
 }
-

@@ -1,7 +1,6 @@
 /**
  * 
  */
-
 var mojZegar = setInterval(tikTak, 500);
 
 function tikTak() {
@@ -33,5 +32,4 @@ function tikTak() {
 			+ dzien;
 	document.getElementById("czas").innerHTML = godzina + " : " + minuta
 			+ " : " + sekunda;
-
 }
