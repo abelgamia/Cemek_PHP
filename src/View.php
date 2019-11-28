@@ -126,8 +126,8 @@ class View {
 	public function showFormAdmin() {
 		{
 			$form_admin = "";
-			$form_admin .= "";
-			$form_admin .= "";
+			$form_admin .= "<form name='form_admin' method='POST' action=''>";
+			$form_admin .= "</form>\n";
 			$form_admin .= "";
 		}
 		return $form_admin;
@@ -135,7 +135,7 @@ class View {
 	public function showFormLogIn() {
 		{
 			$form_login = "";
-			$form_login .= "<form name='' method='POST' action=''>";
+			$form_login .= "<form name='form_login' method='POST' action=''>";
 			$form_login .= "<input name='form_login[login]' type='text' value='' placeholder='Login' required>\n";
 			$form_login .= "<input name='form_login[pass]' type='password' value='' placeholder='Pass' required>\n";
 			$form_login .= "<input name='form_login[submit]' type='submit' value='Login' placeholder='' required>\n";
@@ -146,8 +146,8 @@ class View {
 	public function showFormRegist() {
 		{
 			$form_regist = "";
-			$form_regist .= "";
-			$form_regist .= "";
+			$form_regist .= "<form name='form_regist' method='POST' action=''>";
+			$form_regist .= "</form>\n";
 			$form_regist .= "";
 		}
 		return $form_regist;
