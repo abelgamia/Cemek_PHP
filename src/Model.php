@@ -1,10 +1,8 @@
 <?php
 
 namespace src;
-
 use PDO;
 use PDOException;
-
 /**
  *
  * @author Edi
@@ -12,8 +10,6 @@ use PDOException;
  */
 class Model {
 	public $conn; // Uchwyt połączenia z bazą danych
-	/**
-	 */
 	public function __construct() {
 		try {
 			$this->conn = new PDO(Config::$db['db_driver'].':host='.Config::$db['db_host']
@@ -24,7 +20,6 @@ class Model {
 			echo $e->getMessage();
 			exit();
 		}
-		echo 'Model<br>';
 	}
 }
 

@@ -8,96 +8,149 @@ namespace src;
  *        
  */
 class View {
+	/**
+	 * @return string
+	 */
 	public function showDach() {
-		echo "<!DOCTYPE html>\n";
-		echo "<html lang='pl' dir='ltr'>\n";
-		echo "<head>\n";
-		echo "<meta charset='utf-8'>\n";
-		echo "<meta http-equiv='X-UA-Compatible' content='IE=edge'>\n";
-		echo "<meta name='viewport' content='width=device-width, initial-scale=1'>\n";
-		echo "<link rel='shortcut icon' href='img/favicon.ico' type='image/x-icon'>\n";
-		echo "<link href='https://fonts.googleapis.com/icon?family=Material+Icons' rel='stylesheet'>\n";
-		$this->showStyle();
-		$this->showSkrypty();
-		echo "<title>";
-		echo Util::self();
-		echo "</title>\n";
-		echo "</head>\n";
-		echo "<body>\n";
-		echo "<div class='zero'>\n";
-		echo "<header class='dach'>\n";
-		$this->showLewy();
-		$this->showCenter();
-		$this->showPrawy();
-		$this->showLinki();
-		echo "</header>\n";
-		echo "<div class='front'>\n";
+		{
+			$dach = "";
+			$dach .= "<!DOCTYPE html>\n";
+			$dach .= "<html lang='pl' dir='ltr'>\n";
+			$dach .= "<head>\n";
+			$dach .= "<meta charset='utf-8'>\n";
+			$dach .= "<meta http-equiv='X-UA-Compatible' content='IE=edge'>\n";
+			$dach .= "<meta name='viewport' content='width=device-width, initial-scale=1'>\n";
+			$dach .= "<link rel='shortcut icon' href='img/favicon.ico' type='image/x-icon'>\n";
+			$dach .= "<link href='https://fonts.googleapis.com/icon?family=Material+Icons' rel='stylesheet'>\n";
+			$dach .= $this->showStyle();
+			$dach .= $this->showSkrypty();
+			$dach .= "<title>";
+			$dach .= Util::self();
+			$dach .= "</title>\n";
+			$dach .= "</head>\n";
+			$dach .= "<body>\n";
+			$dach .= "<div class='zero'>\n";
+			$dach .= "<header class='dach'>\n";
+			$dach .= $this->showLewy();
+			$dach .= $this->showCenter();
+			$dach .= $this->showPrawy();
+			$dach .= $this->showLinki();
+			$dach .= "</header>\n";
+			$dach .= "<div class='front'>\n";
+		}
+		return $dach;
 	}
 	public function showStyle() {
-		foreach(Config::$view['style'] as $styl) {
-			echo "<link href='";
-			echo $styl;
-			echo "' rel='stylesheet'>\n";
+		{
+			$style = "";
+			foreach(Config::$view['style'] as $styl) {
+				$style .= "<link href='";
+				$style .= $styl;
+				$style .= "' rel='stylesheet'>\n";
+			}
 		}
-		echo "<link href='css/locales/";
-		echo Util::self();
-		echo ".css' rel='stylesheet'>\n";
+		return $style;
 	}
 	public function showSkrypty() {
-		foreach(Config::$view['skrypty'] as $skrypt) {
-			echo "<script src='";
-			echo $skrypt;
-			echo "'></script>\n";
+		{
+			$skrypty = "";
+			foreach(Config::$view['skrypty'] as $skrypt) {
+				$skrypty .= "<script src='";
+				$skrypty .= $skrypt;
+				$skrypty .= "'></script>\n";
+			}
 		}
+		return $skrypty;
 	}
 	public function showLewy() {
-		echo "<div class='lewy'>\n";
-		echo "<div id='data'></div>\n";
-		echo "<div id='czas'></div>\n";
-		echo "</div>\n";
+		{
+			$lewy = "";
+			$lewy .= "<div class='lewy'>\n";
+			$lewy .= "<div id='data'></div>\n";
+			$lewy .= "<div id='czas'></div>\n";
+			$lewy .= "</div>\n";
+		}
+		return $lewy;
 	}
 	public function showCenter() {
-		echo "<div class='center'>\n";
-		echo "<a href='index.php' class='logo'>";
-		echo Config::$view['logo'];
-		echo "</a>\n";
-		echo "</div>\n";
+		{
+			$center = "";
+			$center .= "<div class='center'>\n";
+			$center .= "<a href='?linki=1' class='logo'>";
+			$center .= Config::$view['logo'];
+			$center .= "</a>\n";
+			$center .= "</div>\n";
+		}
+		return $center;
 	}
 	public function showPrawy() {
-		echo "<div class='prawy'>\n";
-		$this->showFormLogIn();
-		echo "</div>\n";
-	}
-	public function showFormLogIn() {
-		echo "<form name='' method='POST' action=''>";
-		echo "<input name='form_login[login]' type='text' value='' placeholder='Login' required>\n";
-		echo "<input name='form_login[pass]' type='password' value='' placeholder='Pass' required>\n";
-		echo "<input name='form_login[submit]' type='submit' value='Login' placeholder='' required>\n";
-		echo "</form>\n";
+		{
+			$prawy = "";
+			$prawy .= "<div class='prawy'>\n";
+			$prawy .= $this->showFormLogIn();
+			$prawy .= "</div>\n";
+		}
+		return $prawy;
 	}
 	public function showLinki() {
-		echo "<nav class='linki'>\n";
-		echo "<ul>\n";
-		foreach (Config::$view['linki'] as $n => list($nazwa, $klasa, $url)) {
-			?>
-			<li><a href='<?= $url; ?>' class='<?= $klasa; ?>' id=''><?= $nazwa; ?></a></li>
-			<?php
+		{
+			$linki = "";
+			$linki .= "<nav class='linki'>\n";
+			$linki .= "<ul>\n";
+			foreach (Config::$view['linki'] as $n => list($nazwa, $klasa, $url)) {
+				$linki .= "<li><a href='$url' class='$klasa' id=''>$nazwa</a></li>";
+			}
+			$linki .= "</ul>\n";
+			$linki .= "</nav>\n";
 		}
-		echo "</ul>\n";
-		echo "</nav>\n";
+		return $linki;
 	}
 	//-----------------------------------------
 	public function showStopka() {
-		echo "</div>\n";
-		echo "<footer class='stopka'>\n";
-		echo "<a href='index.php' class='stopka_logo'>";
-		echo Config::$view['stopka'];
-		echo "&copy;";
-		echo "</a>";
-		echo "</footer>\n";
-		echo "</div>\n";
-		echo "</body>\n";
-		echo "</html>\n";
+		{
+			$stopka = "";
+			$stopka .= "</div>\n";
+			$stopka .= "<footer class='stopka'>\n";
+			$stopka .= "<a href='?dupa' class='stopka_logo'>";
+			$stopka .= Config::$view['stopka'];
+			$stopka .= "&copy;";
+			$stopka .= "</a>";
+			$stopka .= "</footer>\n";
+			$stopka .= "</div>\n";
+			$stopka .= "</body>\n";
+			$stopka .= "</html>\n";
+		}
+		return $stopka;
+	}
+	//-----------------------------------------
+	public function showFormAdmin() {
+		{
+			$form_admin = "";
+			$form_admin .= "";
+			$form_admin .= "";
+			$form_admin .= "";
+		}
+		return $form_admin;
+	}
+	public function showFormLogIn() {
+		{
+			$form_login = "";
+			$form_login .= "<form name='' method='POST' action=''>";
+			$form_login .= "<input name='form_login[login]' type='text' value='' placeholder='Login' required>\n";
+			$form_login .= "<input name='form_login[pass]' type='password' value='' placeholder='Pass' required>\n";
+			$form_login .= "<input name='form_login[submit]' type='submit' value='Login' placeholder='' required>\n";
+			$form_login .= "</form>\n";
+		}
+		return $form_login;
+	}
+	public function showFormRegist() {
+		{
+			$form_regist = "";
+			$form_regist .= "";
+			$form_regist .= "";
+			$form_regist .= "";
+		}
+		return $form_regist;
 	}
 }
 
