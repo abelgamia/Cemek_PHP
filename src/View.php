@@ -10,6 +10,7 @@ namespace src;
 class View {
 	/**
 	 * @return string
+	 * zwraca dach
 	 */
 	public function showDach() {
 		{
@@ -40,6 +41,9 @@ class View {
 		}
 		return $dach;
 	}
+	/**
+	 * @return string
+	 */
 	public function showStyle() {
 		{
 			$style = "";

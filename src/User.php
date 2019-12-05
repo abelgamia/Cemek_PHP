@@ -13,7 +13,7 @@ class User extends Model {
 	private $pass;
 	private $email;
 	private $access;
-	private $loged;
+	private $loged = FALSE;
 	public function __construct() {
 		parent::__construct();
 	}
