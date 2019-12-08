@@ -4,7 +4,7 @@ namespace src;
 
 /**
  *
- * @author Edi
+ * @author Edi @ Abelg
  *        
  */
 class Engine {
