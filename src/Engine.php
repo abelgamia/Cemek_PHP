@@ -12,24 +12,7 @@ class Engine {
 		
 		$name = "private";
 		$sesid;
-		$loged = FALSE;
-		$int = 3600*24*30;
-		
-		// kuki spraw czy zarejestrowany lub odwiedziny kolejna i sesja
-		// self::kuki();
-// 		if (!$_COOKIE) {
-			
-// 		}
-		if (!isset($_COOKIE[$name])) {
-			if (empty($_SESSION)) {
-				session_name($name);
-				session_start();
-				$sesid = session_id();
-			}
-			setcookie($name, $sesid,  $loged, time()+$int);
-		} else {
-			
-		}
+		$time = 3600*24*30;
 		
 		// kuki
 		// kuki
@@ -39,6 +22,34 @@ class Engine {
 		// 
 		echo $engine -> showStopka();
 	}
-	public function kuki() {}
+	public function checkKukis() {
+		if (!$_COOKIE) {
+			return FALSE;
+		} else {
+			return TRUE;
+		}
+	}
+	public function getKuki($name) {
+		if (!isset($_COOKIE[$name])) {
+			return FALSE;
+		} else {
+			$value = $_COOKIE[$name];
+			return $value;
+		}
+	}
+	public function setKuki($name, $sesid, $time) {
+		setcookie($name, $sesid, time()+$time);
+	}
+	public function startSession($name) {
+		{
+			if (!empty($_SESSION)) {
+				session_write_close();
+			}
+			session_name($name);
+			session_start();
+			$sesid = session_id();
+		}
+		return $sesid;
+	}
 }
 
