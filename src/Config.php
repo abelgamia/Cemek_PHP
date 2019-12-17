@@ -58,5 +58,33 @@ class Config {
 				)
 		)
 	);
+	/**
+	 * @return multitype:string 
+	 */
+	public static function getDb() {
+		return Config::$db;
+	}
+
+	/**
+	 * @param multitype:string  $db
+	 */
+	public static function setDb($db) {
+		Config::$db = $db;
+	}
+
+	/**
+	 * @return multitype:string multitype:string  multitype:multitype:string   
+	 */
+	public static function getView() {
+		return Config::$view;
+	}
+
+	/**
+	 * @param multitype:string multitype:string  multitype:multitype:string    $view
+	 */
+	public static function setView($view) {
+		Config::$view = $view;
+	}
+
 }
 
