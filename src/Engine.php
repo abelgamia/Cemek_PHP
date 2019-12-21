@@ -15,9 +15,9 @@ class Engine {
 	
 	public function __construct() {
 		// ----------------------------------
-		$control = new Control();
+// 		$control = new Control();
 		// ----------------------------------
-		$model = new User();
+// 		$model = new User();
 		// ----------------------------------
 		$view = new View();
 		echo $view -> showDach();
