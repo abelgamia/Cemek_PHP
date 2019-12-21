@@ -85,6 +85,5 @@ class Config {
 	public static function setView($view) {
 		Config::$view = $view;
 	}
-
 }
 

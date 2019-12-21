@@ -1,5 +1,7 @@
 <?php
+
 use src\Engine;
+
 // include 'src/inkludy.php';
 /**
  *
@@ -11,4 +13,3 @@ spl_autoload_register(function ($class) {
 });
 
 $index = new Engine();
-

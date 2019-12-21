@@ -8,16 +8,12 @@ namespace src;
  *        
  */
 class Util {
-	public function __construct() {
-		
-		
-	}
+	public function __construct() {}
 	public static function self() {
 		$wyraz = array('/Cemek/', '.php');
 		$self = str_replace($wyraz, '', $_SERVER['PHP_SELF']);
 		return $self;
 	}
-	
 	public function serverIdent() {
 		$indicesServer = array('PHP_SELF',
 				'argv',
@@ -59,7 +55,6 @@ class Util {
 				'AUTH_TYPE',
 				'PATH_INFO',
 				'ORIG_PATH_INFO') ;
-		
 		echo '<table cellpadding="10">' ;
 		foreach ($indicesServer as $arg) {
 			if (isset($_SERVER[$arg])) {
@@ -72,4 +67,3 @@ class Util {
 		echo '</table>' ;
 	}
 }
-

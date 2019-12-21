@@ -41,9 +41,6 @@ class View {
 		}
 		return $dach;
 	}
-	/**
-	 * @return string
-	 */
 	public function showStyle() {
 		{
 			$style = "";
