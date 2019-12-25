@@ -5,7 +5,7 @@ use src\Engine;
 // include 'src/inkludy.php';
 /**
  *
- * @author Edi
+ * @author Edikowy
  *
  */
 spl_autoload_register(function ($class) {
