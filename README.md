@@ -2,7 +2,7 @@
 <HTML>
 
 <BODY LANG="pl-PL" LINK="#000080" VLINK="#800000" DIR="LTR">
-<P ALIGN=CENTER STYLE="margin-top: 0.42cm; page-break-after: avoid"><FONT FACE="Comic Sans MS, cursive"><FONT SIZE=6>Cemek_PHP</FONT></FONT></P>
+<P ALIGN=CENTER STYLE="margin-top: 0.42cm; page-break-after: avoid"><FONT FACE="Comic Sans MS, cursive"><FONT SIZE=24>Cemek_PHP</FONT></FONT></P>
 <P STYLE="margin-bottom: 0cm"><FONT FACE="CMU Typewriter Text, monospace"><FONT FACE="Palatino Linotype, serif">Autorski
 edukacyjno/eksperymentalny projekt (CMS)
 <A HREF="https://pl.wikipedia.org/wiki/System_zarządzania_treścią">https://pl.wikipedia.org/wiki/System_zarz%C4%85dzania_tre%C5%9Bci%C4%85</A>
