@@ -1,25 +1,4 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
-<HTML>
-<HEAD>
-	<META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=windows-1250">
-	<TITLE></TITLE>
-	<META NAME="GENERATOR" CONTENT="OpenOffice 4.1.5  (Win32)">
-	<META NAME="AUTHOR" CONTENT="Edikowy ">
-	<META NAME="CREATED" CONTENT="20191222;19131084">
-	<META NAME="CHANGED" CONTENT="20200111;19460700">
-	<STYLE TYPE="text/css">
-	<!--
-		@page { size: 21cm 29.7cm; margin: 2cm }
-		P { margin-bottom: 0.21cm }
-		H1 { margin-bottom: 0.21cm; page-break-after: avoid }
-		H1.western { font-family: "Arial", sans-serif; font-size: 16pt; font-weight: bold }
-		H1.cjk { font-family: "Microsoft YaHei"; font-size: 16pt; font-weight: bold }
-		H1.ctl { font-family: "Mangal"; font-size: 16pt; font-weight: bold }
-		P.wcięcie-pierwszego-wiersza { text-indent: 0.5cm }
-		A:link { color: #000080; so-language: zxx; text-decoration: underline }
-	-->
-	</STYLE>
-</HEAD>
+
 <BODY LANG="pl-PL" LINK="#000080" VLINK="#800000" DIR="LTR">
 <P ALIGN=CENTER STYLE="margin-bottom: 0cm; text-decoration: none"><FONT FACE="Palatino Linotype, serif"><FONT SIZE=6>Cemek_PHP</FONT></FONT></P>
 <P STYLE="margin-bottom: 0cm"><BR>
