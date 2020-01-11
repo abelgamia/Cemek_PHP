@@ -1,13 +1,11 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
 
 <BODY LANG="pl-PL" LINK="#000080" VLINK="#800000" DIR="LTR">
-<P ALIGN=CENTER STYLE="margin-bottom: 0cm; text-decoration: none"><FONT FACE="Palatino Linotype, serif"><FONT SIZE=6>Cemek_PHP</FONT></FONT></P>
-<P STYLE="margin-bottom: 0cm"><BR>
-</P>
-<P STYLE="margin-bottom: 0cm"><BR>
-</P>
+<P ALIGN=CENTER STYLE="margin-top: 0.42cm; page-break-after: avoid"><FONT FACE="Comic Sans MS, cursive"><FONT SIZE=6>Cemek_PHP</FONT></FONT></P>
 <P STYLE="margin-bottom: 0cm"><FONT FACE="CMU Typewriter Text, monospace"><FONT FACE="Palatino Linotype, serif">Autorski
 edukacyjno/eksperymentalny projekt (CMS)
-</FONT><A HREF="https://pl.wikipedia.org/wiki/System_zarządzania_treścią"><FONT FACE="Palatino Linotype, serif">https://pl.wikipedia.org/wiki/System_zarz%C4%85dzania_tre%C5%9Bci%C4%85</FONT></A><FONT FACE="Palatino Linotype, serif">
+<A HREF="https://pl.wikipedia.org/wiki/System_zarządzania_treścią">https://pl.wikipedia.org/wiki/System_zarz%C4%85dzania_tre%C5%9Bci%C4%85</A>
  systemu zarządzania treścią w PHP.</FONT></FONT></P>
 <H1 CLASS="western"><FONT FACE="Palatino Linotype, serif">Zastosowanie</FONT></H1>
 <P CLASS="wcięcie-pierwszego-wiersza"><FONT FACE="Palatino Linotype, serif">Jako
@@ -58,13 +56,6 @@ języka (multilanguage).</FONT></P>
 </P>
 <P STYLE="margin-bottom: 0cm"><BR>
 </P>
-<P STYLE="margin-bottom: 0cm; text-decoration: none"><STRIKE><FONT FACE="Palatino Linotype, serif">Zegar
-wyświetla czas zgodny z lokalizacją i stosownie sciemnia/rozjaśnia
-stronę</FONT></STRIKE></P>
-<P STYLE="margin-bottom: 0cm; text-decoration: none"><BR>
-</P>
-<P STYLE="margin-bottom: 0cm; text-decoration: none"><STRIKE><FONT FACE="Palatino Linotype, serif">Testy
-Unit , automatyczne + integracyjne i wydajnościowe</FONT></STRIKE></P>
 <P STYLE="margin-bottom: 0cm"><BR>
 </P>
 <P STYLE="margin-bottom: 0cm"><BR>
