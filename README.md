@@ -2,8 +2,8 @@
 <HTML>
 
 <BODY LANG="pl-PL" LINK="#000080" VLINK="#800000" DIR="LTR">
-<P ALIGN=CENTER STYLE="margin-top: 0.42cm; page-break-after: avoid"><H1><FONT FACE="Palatino Linotype, serif">Cemek_PHP </FONT>
-</H1></P>
+<H1 ALIGN=CENTER STYLE="margin-top: 0.42cm; page-break-after: avoid"><FONT FACE="Palatino Linotype, serif">Cemek_PHP </FONT>
+</H1>
 
 <P STYLE="margin-bottom: 0cm"><FONT FACE="CMU Typewriter Text, monospace"><FONT FACE="Palatino Linotype, serif">Autorski
 edukacyjno/eksperymentalny projekt (CMS)
