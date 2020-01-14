@@ -6,7 +6,7 @@ use PDO;
 
 /**
  *
- * @author Edi
+ * @author Edikowy
  *        
  */
 class User extends Model {
@@ -65,13 +65,13 @@ class User extends Model {
 				$_SESSION['user']['loged'] = TRUE;
 				return TRUE;
 			} else {
-				$_SESSION['err']['pass'] = 'Złe haslo';
+				$_SESSION['user_err']['pass'] = 'Złe haslo';
 				unset($_SESSION['user']['login']);
 				unset($_SESSION['user']['pass']);
 				return FALSE;
 			}
 		} else {
-			$_SESSION['err']['login'] = 'Zły login';
+			$_SESSION['user_err']['login'] = 'Zły login';
 			unset($_SESSION['user']['login']);
 			unset($_SESSION['user']['pass']);
 			return FALSE;
@@ -101,29 +101,29 @@ class User extends Model {
 		{
 			if ((strlen($login) < 3) || (strlen($login) > 20)) {
 				$all_OK = FALSE;
-				$_SESSION['e']['login'] = "Nick musi posiadać od 3 do 20 znaków!";
+				$_SESSION['user_e']['login'] = "Nick musi posiadać od 3 do 20 znaków!";
 			}
 			if (ctype_alnum($login) == FALSE) {
 				$all_OK = FALSE;
-				$_SESSION['e']['login'] = "Nick musi składać się z znaków alfanumerycznych";
+				$_SESSION['user_e']['login'] = "Nick musi składać się z znaków alfanumerycznych";
 			}
 			$emailB = filter_var($email,FILTER_SANITIZE_EMAIL);
 			if ((filter_var($emailB,FILTER_VALIDATE_EMAIL) == FALSE) || ($emailB != $email)) {
 				$all_OK = FALSE;
-				$_SESSION['e']['email'] = "Podaj poprawny adres e-mail!";
+				$_SESSION['user_e']['email'] = "Podaj poprawny adres e-mail!";
 			}
 			if ((strlen($pass) < 6) || (strlen($pass2) > 20)) {
 				$all_OK = FALSE;
-				$_SESSION['e']['pass'] = "Hasło musi składać się od 6 do 20 znaków.";
+				$_SESSION['user_e']['pass'] = "Hasło musi składać się od 6 do 20 znaków.";
 			}
 			if ($pass != $pass2) {
 				$all_OK = FALSE;
-				$_SESSION['e']['pass'] = "Hasła nie są identyczne.";
+				$_SESSION['user_e']['pass'] = "Hasła nie są identyczne.";
 			}
 			$pass_hash = password_hash($pass,PASSWORD_DEFAULT);
 			if (!isset($regulations)) {
 				$all_OK = FALSE;
-				$_SESSION['e']['regulations'] = "Zaakceptuj regulamin.";
+				$_SESSION['user_e']['regulations'] = "Zaakceptuj regulamin.";
 			}
 			$sql = "SELECT email FROM users WHERE email = '$email'";
 			$query = $this->conn->prepare($sql);
@@ -132,7 +132,7 @@ class User extends Model {
 			$result = $query->fetch(PDO::FETCH_ASSOC);
 			if (!empty($result)) {
 				$all_OK = FALSE;
-				$_SESSION['e']['email'] = "Istnieje już konto przypisane do tego adresu e-mail!";
+				$_SESSION['user_e']['email'] = "Istnieje już konto przypisane do tego adresu e-mail!";
 			}
 			$sql = "SELECT login FROM users WHERE login = '$login'";
 			$query = $this->conn->prepare($sql);
@@ -141,13 +141,13 @@ class User extends Model {
 			$result = $query->fetch(PDO::FETCH_ASSOC);
 			if (!empty($result)) {
 				$all_OK = FALSE;
-				$_SESSION['e']['login'] = "Istnieje już gracz o takim nicku! Wybierz inny.";
+				$_SESSION['user_e']['login'] = "Istnieje już gracz o takim nicku! Wybierz inny.";
 			}
 			if ($all_OK == TRUE) {
 				$sql = "INSERT INTO users VALUES (NULL, '$login', '$pass_hash', '$email', '1', '')";
 				$query = $this->conn->prepare($sql);
 				$query->execute();
-				$_SESSION['udanarejestracja'] = TRUE; // ???????????????/
+				$_SESSION['user']['register_ok'] = TRUE; // ???????????????/
 				header("Location: {$_SERVER['PHP_SELF']}"); // ???????????????/
 			}
 			$this->conn = null; // ???????????????/
