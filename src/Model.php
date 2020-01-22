@@ -7,7 +7,7 @@ use PDOException;
 
 /**
  *
- * @author Edi
+ * @author Edikowy
  *        
  */
 class Model {
