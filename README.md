@@ -1,5 +1,3 @@
-# CemekPHP
-
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
 <HTML>
 
@@ -8,9 +6,7 @@
 </H1>
 
 <P STYLE="margin-bottom: 0cm"><FONT FACE="CMU Typewriter Text, monospace"><FONT FACE="Palatino Linotype, serif">Autorski
-edukacyjno/eksperymentalny projekt (CMS)
-<A HREF="https://pl.wikipedia.org/wiki/System_zarządzania_treścią">https://pl.wikipedia.org/wiki/System_zarz%C4%85dzania_tre%C5%9Bci%C4%85</A>
- systemu zarządzania treścią w PHP.</FONT></FONT></P>
+ edukacyjno/eksperymentalny projekt (<A HREF="https://pl.wikipedia.org/wiki/System_zarządzania_treścią">CMS</A>) systemu zarządzania treścią w PHP.</FONT></FONT></P>
 <H1 CLASS="western"><FONT FACE="Palatino Linotype, serif">Zastosowanie</FONT></H1>
 <P CLASS="wcięcie-pierwszego-wiersza"><FONT FACE="Palatino Linotype, serif">Jako
 podstawa do wszystkich zastosowań web w tym min. e-commerce.</FONT></P>
@@ -21,18 +17,17 @@ działać niestabilnie).</P>
 do bazy danych zgodny z PDO.</FONT></P>
 <P STYLE="margin-bottom: 0cm"><BR>
 </P>
-<H1 CLASS="western"><FONT FACE="Palatino Linotype, serif">Założenia
-główne </FONT>
+<H1 CLASS="western"><FONT FACE="Palatino Linotype, serif">Założenia główne </FONT>
 </H1>
 <P CLASS="wcięcie-pierwszego-wiersza"><FONT FACE="Palatino Linotype, serif">W
-pełni obiektowy (OOP).
-</FONT><A HREF="https://pl.wikipedia.org/wiki/Programowanie_obiektowe"><FONT FACE="Palatino Linotype, serif"><FONT SIZE=1 STYLE="font-size: 8pt">https://pl.wikipedia.org/wiki/Programowanie_obiektowe</FONT></FONT></A><FONT FACE="Palatino Linotype, serif"><FONT SIZE=1 STYLE="font-size: 8pt">
-</FONT></FONT>
+pełni obiektowy (</FONT><A HREF="https://pl.wikipedia.org/wiki/Programowanie_obiektowe"><FONT FACE="Palatino Linotype, serif">OOP</FONT></FONT></A><FONT FACE="Palatino Linotype, serif">
+</FONT></FONT>).
+
 </P>
 <P CLASS="wcięcie-pierwszego-wiersza"><FONT FACE="Palatino Linotype, serif">Zgodny
-z MVC (Model View Controler).
-</FONT><A HREF="https://pl.wikipedia.org/wiki/Model-View-Controller"><FONT FACE="Palatino Linotype, serif"><FONT SIZE=1 STYLE="font-size: 8pt">https://pl.wikipedia.org/wiki/Model-View-Controller</FONT></FONT></A><FONT FACE="Palatino Linotype, serif"><FONT SIZE=1 STYLE="font-size: 8pt">
- </FONT></FONT>
+z MVC (</FONT><A HREF="https://pl.wikipedia.org/wiki/Model-View-Controller"><FONT FACE="Palatino Linotype, serif"><FONT SIZE=1 STYLE="font-size: 8pt">(Model View Controler)</FONT></FONT></A><FONT FACE="Palatino Linotype, serif"><FONT SIZE=1 STYLE="font-size: 8pt">
+ </FONT>).
+
 </P>
 <P CLASS="wcięcie-pierwszego-wiersza"><FONT FACE="Palatino Linotype, serif">Baza
 danych z interfejsu PDO.</FONT></P>
@@ -47,7 +42,7 @@ cookies. ? rodo</FONT></P>
 (CSS) do wyboru.</FONT></P>
 <P CLASS="wcięcie-pierwszego-wiersza"><FONT FACE="Palatino Linotype, serif">Zmiana
 języka (multilanguage).</FONT></P>
-<H1 CLASS="western"><FONT FACE="Palatino Linotype, serif">Instalacja</FONT></H1>
+<H1 CLASS="western"><FONT FACE="Palatino Linotype, serif">Instalacja.</FONT></H1>
 <H1 CLASS="western"><FONT FACE="Palatino Linotype, serif">Licencje</FONT></H1>
 <P STYLE="margin-bottom: 0cm"><FONT FACE="Palatino Linotype, serif">	</FONT></P>
 <P STYLE="margin-bottom: 0cm"><FONT FACE="Palatino Linotype, serif">	</FONT></P>
