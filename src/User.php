@@ -28,17 +28,15 @@ class User extends Model {
 			$query = $this->conn->prepare($sql);
 			$query->execute();
 			$result = $query->fetch(PDO::FETCH_ASSOC);
-			if (!empty($result)) {
-				if (password_verify($this->getPass(),$result['pass'])) {
-					$this->setId($result['id']);
-					$_SESSION['user']['id'] = $this->getId();
-					$this->setEmail($result['email']);
-					$_SESSION['user']['email'] = $this->getEmail();
-					$this->setAccess($result['access']);
-					$_SESSION['user']['access'] = $this->getAccess();
-					$this->setLoged(TRUE);
-					$_SESSION['user']['loged'] = TRUE;
-				}
+			if (!empty($result) && (password_verify($this->getPass(),$result['pass']))) {
+				$this->setId($result['id']);
+				$_SESSION['user']['id'] = $this->getId();
+				$this->setEmail($result['email']);
+				$_SESSION['user']['email'] = $this->getEmail();
+				$this->setAccess($result['access']);
+				$_SESSION['user']['access'] = $this->getAccess();
+				$this->setLoged(TRUE);
+				$_SESSION['user']['loged'] = TRUE;
 			}
 		}
 	}
@@ -155,7 +153,7 @@ class User extends Model {
 	}
 	public function chengeEmail($new_email, $pass, $confirm) {
 		if ($this->getLoged == TRUE) {
-			$email = addslashes($new_email);
+		    $email = addslashes($new_email);
 			$emailB = filter_var($email,FILTER_SANITIZE_EMAIL);
 			if ((filter_var($emailB,FILTER_VALIDATE_EMAIL) == FALSE) || ($emailB != $email)) {
 				$_SESSION['e_change_email'] = "Podaj poprawny adres e-mail!"; // ???????????????/

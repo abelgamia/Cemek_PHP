@@ -14,25 +14,7 @@ class Engine {
     private $kuki_name;
     private $kuki_value;
     private $kuki_exp = 3600*24*30;
-    public function __construct() {
-        // ----------------------------------
-        // ----------------------------------
-//         $this->startSession($ses_name, $ses_id);
-//         $this->getKuki($kuki_name);
-//         $this->setKuki($kuki_name, $kuki_value, $kuki_exp);
-//         $this->doHedera($url);
-        // ----------------------------------
-        // ----------------------------------
-		$control = new Control();
-		// ----------------------------------
-// 		$model = new User();
-		// ----------------------------------
-		$view = new View();
-		echo $view -> showDach();
-		echo 'lorem ipsum';
-		echo $view -> showStopka();
-		// ----------------------------------
-	}
+    public function __construct() {}
 	public function startSession($ses_name, $ses_id) {
 	    {
 	        if (!empty($_SESSION)) {
@@ -44,20 +26,26 @@ class Engine {
 	    }
 	    return TRUE;
 	}
+	public function start() {
+	    $control = new Control();
+	    // ----------------------------------
+	    // 		$model = new User();
+	    // ----------------------------------
+	    $view = new View();
+	    echo $view -> showDach();
+	    echo 'lorem ipsum';
+	    echo $view -> showStopka();
+	}
 	public function doHedera($url) {
 	    header("location: " . $url);
 	}
 	public function checkKuki($kuki_name) {
-	    if ((!$_COOKIE) || (!isset($_COOKIE[$kuki_name]))) {
-	        return FALSE;
-	    } else {
-	        return TRUE;
-	    }
+	        return ((!$_COOKIE) || (!isset($_COOKIE[$kuki_name])));
 	}
 	public function getKuki($kuki_name) {
 	    if (isset($_COOKIE[$kuki_name])) {
-	        $kuki_value = $_COOKIE[$kuki_name];
-	        return $kuki_value;
+// 	        $kuki_value = $_COOKIE[$kuki_name];
+	        return $_COOKIE[$kuki_name];
 	    } else {
 	        return FALSE;
 	    }

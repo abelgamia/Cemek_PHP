@@ -11,8 +11,7 @@ class Util {
 	public function __construct() {}
 	public static function self() {
 		$wyraz = array('/Cemek/', '.php');
-		$self = str_replace($wyraz, '', $_SERVER['PHP_SELF']);
-		return $self;
+		return str_replace($wyraz, '', $_SERVER['PHP_SELF']);
 	}
 	public function serverIdent() {
 		$indicesServer = array('PHP_SELF',
