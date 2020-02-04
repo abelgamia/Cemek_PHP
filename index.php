@@ -1,20 +1,20 @@
 <?php
 
 use src\Engine;
-
+include 'src/inkludy.php';
 
 /**
  *
- * @author Edikowy
+ * @author Edikowy & Abelg
  *
  */
 
-spl_autoload_extensions('.php');
-spl_autoload_register('autoload');
-function autoload($class) {
-    set_include_path('./src/');
-    spl_autoload($class);
-}
+// spl_autoload_extensions('.php');
+// spl_autoload_register('autoload');
+// function autoload($class) {
+//     set_include_path('./src/');
+//     spl_autoload($class);
+// }
 
 $index = new Engine();
 $index -> start();
