@@ -16,9 +16,9 @@ class Engine {
 
     public function startSession($ses_name, $ses_id) {
         {
-            session_name($ses_name);
-            session_id($ses_id);
-            session_start();
+            $start = session_name($ses_name);
+            $start = session_id($ses_id);
+            $start = session_start();
         }
         return TRUE;
     }
@@ -26,7 +26,8 @@ class Engine {
     public function start() {
         //----------------------------
         if (!isset($_COOKIE[$this->getSes_name()])) {
-            $this->setSes_id(session_create_id());
+            $s = session_create_id();
+            $this->setSes_id($s);
         } else {
             $this->setSes_id($_COOKIE[$this->getSes_name()]);
         }
